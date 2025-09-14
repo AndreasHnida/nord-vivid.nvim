@@ -1,4 +1,4 @@
-local named_colors = require("nord.named_colors")
+local named_colors = require("nord-vivid.named_colors")
 
 local dark_colors = {
 	nord0_gui = named_colors.black, -- nord0 in palette

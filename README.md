@@ -1,13 +1,21 @@
+# nord-vivid.nvim
 
-# shaunsingh/nord.nvim
+## A vibrant fork of [shaunsingh/nord.nvim](https://github.com/shaunsingh/nord.nvim) with more vivid colors
 
-## Neovim theme based off of the [Nord Color Palette.](https://www.nordtheme.com/docs/colors-and-palettes)
+This is a fork of the excellent [nord.nvim](https://github.com/shaunsingh/nord.nvim) colorscheme by [@shaunsingh](https://github.com/shaunsingh), modified to provide more vibrant and vivid colors while maintaining the Nord aesthetic. All credit for the original implementation goes to the original author.
+
+### What's Different?
+
+This fork enhances the color palette with more saturated and bright colors:
+- **Brighter accent colors** - More vivid teals, blues, reds, oranges, yellows, greens, and purples
+- **Increased saturation** - Colors pop more while keeping the Nord feel
+- **Separate plugin name** - Can be installed alongside the original nord.nvim
 
 ![118406380-d78ad580-b649-11eb-945c-5988fa717f39](https://user-images.githubusercontent.com/71196912/128029391-ad55fd41-d5f9-43bd-a795-c11b562f9d6d.jpg)
 
 ## Features
 
-Nord.nvim is meant to be a modern colorscheme written in lua for NeoVim that supports a lot of the new features
+Nord-vivid.nvim is a modern colorscheme written in lua for NeoVim that supports a lot of the new features
 added to NeoVim like built-in LSP and [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
 + Supported plugins:
@@ -49,12 +57,12 @@ Install via your favourite package manager:
 
 ```vim
 " If you are using Vim-Plug
-Plug 'shaunsingh/nord.nvim'
+Plug 'yourusername/nord-vivid.nvim'
 ```
 
 ```lua
 -- If you are using Packer
-use 'shaunsingh/nord.nvim'
+use 'yourusername/nord-vivid.nvim'
 ```
 
 ## 🌓 Usage
@@ -63,21 +71,21 @@ Enable the colorscheme:
 
 ```vim
 "Vim-Script:
-colorscheme nord
+colorscheme nord-vivid
 ```
 
 ```lua
 --Lua:
-vim.cmd[[colorscheme nord]]
+vim.cmd[[colorscheme nord-vivid]]
 ```
 
-To enable the `nord` theme for `Lualine`, simply specify it in your lualine settings:
+To enable the `nord-vivid` theme for `Lualine`, simply specify it in your lualine settings:
 
 ```lua
 require('lualine').setup {
   options = {
     -- ... your lualine config
-    theme = 'nord'
+    theme = 'nord-vivid'
     -- ... your lualine config
   }
 }
@@ -106,7 +114,7 @@ vim.g.nord_uniform_diff_background = true
 vim.g.nord_bold = false
 
 -- Load the colorscheme
-require('nord').set()
+require('nord-vivid').set()
 ```
 
 ```vim
@@ -119,7 +127,7 @@ let g:nord_uniform_diff_background = v:true
 let g:nord_bold = v:false
 
 " Load the colorscheme
-colorscheme nord
+colorscheme nord-vivid
 ```
 
 ### headlines support
@@ -127,82 +135,22 @@ colorscheme nord
 To support [headlines]("https://github.com/lukas-reineke/headlines.nvim"), you should add these code to your settings:
 
 ```lua
-require("headlines").setup({
-    markdown = {
-        headline_highlights = {
-            "Headline1",
-            "Headline2",
-            "Headline3",
-            "Headline4",
-            "Headline5",
-            "Headline6",
-        },
-        codeblock_highlight = "CodeBlock",
-        dash_highlight = "Dash",
-        quote_highlight = "Quote",
-    },
-})
-
+vim.cmd [[highlight Headline1 guibg=#3d3c44 guifg=#d08770]]
+vim.cmd [[highlight Headline2 guibg=#3f4247 guifg=#ebcb8b]]
+vim.cmd [[highlight Headline3 guibg=#394147 guifg=#a3be8c]]
+vim.cmd [[highlight Headline4 guibg=#363e4c guifg=#81a1c1]]
+vim.cmd [[highlight Headline5 guibg=#3a3c4a guifg=#b48ead]]
+vim.cmd [[highlight Headline6 guibg=#3d434f guifg=#d8dee9]]
+vim.cmd [[highlight CodeBlock guibg=#3b4252]]
+vim.cmd [[highlight Dash guibg=#3b4252 gui=bold]]
 ```
 
-It should look like this
+## Credits
 
-![26B3E551-FD57-458C-BE85-C8945BCE37DF](https://user-images.githubusercontent.com/61075605/197376829-43c30172-2528-47a0-b23f-ab63f73c0851.png)
+This is a fork of [shaunsingh/nord.nvim](https://github.com/shaunsingh/nord.nvim). All credit for the original implementation, plugin support, and structure goes to [@shaunsingh](https://github.com/shaunsingh).
 
-### bufferline support
+The color palette is based on the [Nord Color Palette](https://www.nordtheme.com/docs/colors-and-palettes) by Arctic Ice Studio, modified for increased vibrancy.
 
-To support [BufferLine](https://github.com/akinsho/nvim-bufferline.lua), you can add these code to your settings:
+## License
 
-```lua
-local highlights = require("nord").bufferline.highlights({
-    italic = true,
-    bold = true,
-})
-
-require("bufferline").setup({
-    options = {
-        separator_style = "thin",
-    },
-    highlights = highlights,
-})
-
-```
-
-It should look like this
-
-<img width="891" alt="image" src="https://user-images.githubusercontent.com/61075605/189152634-6d309903-90e6-4ffe-a7bc-f65b19eb4c43.png">
-or you want to use slant separator
-
-```lua
-local highlights = require("nord").bufferline.highlights({
-    italic = true,
-    bold = true,
-    fill = "#181c24"
-})
-
-require("bufferline").setup({
-    options = {
-        separator_style = "slant",
-    },
-    highlights = highlights,
-})
-
-```
-
-
-<img width="866" alt="image" src="https://user-images.githubusercontent.com/61075605/189151983-0cbf1f13-e62b-4b01-b6ce-a1c00a5f8ef3.png">
-
-The default setting of bufferline highlights is
-
-```lua
-{
-    fill = colors.nord0_gui,
-    indicator = colors.nord9_gui,
-    bg = colors.nord0_gui,
-    buffer_bg = colors.nord0_gui,
-    buffer_bg_selected = colors.nord1_gui,
-    buffer_bg_visible = "#2A2F3A",
-    bold = true,
-    italic = true,
-}
-```
+Same as the original project - see the original repository for license details.

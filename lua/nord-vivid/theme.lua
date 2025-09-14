@@ -1,4 +1,4 @@
-local nord = require("nord.colors")
+local nord = require("nord-vivid.colors")
 
 local theme = {}
 
